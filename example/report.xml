@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="22" failures="0" disabled="0" errors="0" timestamp="2018-02-20T13:44:03" time="0.252" author="Andreas Stahlhofen" project="ezSim - Kinematic library of AGRT" name="AllTests">
+  <testsuite name="QtMetaSystemTests" tests="7" failures="0" disabled="0" errors="0" time="0.001" tags="">
+    <testcase name="testVehicleBodyStateStreaming" status="run" time="0" classname="QtMetaSystemTests" tags="QtKinematicSimulator" />
+    <testcase name="testVehicleBodyGeometryStreaming" status="run" time="0" classname="QtMetaSystemTests" tags="QtKinematicSimulator" />
+    <testcase name="testGeneralNTrailerStreaming" status="run" time="0" classname="QtMetaSystemTests" tags="QtKinematicSimulator" />
+    <testcase name="testEigenVector2dStreaming" status="run" time="0" classname="QtMetaSystemTests" tags="QtKinematicSimulator" />
+    <testcase name="testVehicleBodyStateVector" status="run" time="0" classname="QtMetaSystemTests" tags="QtKinematicSimulator" />
+    <testcase name="testVehicleBodyGeometryVector" status="run" time="0" classname="QtMetaSystemTests" tags="QtKinematicSimulator" />
+    <testcase name="testInitializeQtMetaSystem" status="run" time="0" classname="QtMetaSystemTests" tags="QtKinematicSimulator" />
+  </testsuite>
+  <testsuite name="AngleTests" tests="1" failures="0" disabled="0" errors="0" time="0" tags="">
+    <testcase name="testRad2Deg" status="run" time="0" classname="AngleTests" tags="ezCore" />
+  </testsuite>
+  <testsuite name="VariadicDataContainerTests" tests="5" failures="0" disabled="0" errors="0" time="0" tags="">
+    <testcase name="defaultConstructor" status="run" time="0" classname="VariadicDataContainerTests" tags="ezCore" />
+    <testcase name="primitivesDataTypesGetByIndex" status="run" time="0" classname="VariadicDataContainerTests" tags="ezCore" />
+    <testcase name="primitivesDataTypesSet" status="run" time="0" classname="VariadicDataContainerTests" tags="ezCore" />
+    <testcase name="pointer" status="run" time="0" classname="VariadicDataContainerTests" tags="ezCore" />
+    <testcase name="functions" status="run" time="0" classname="VariadicDataContainerTests" tags="ezCore" />
+  </testsuite>
+  <testsuite name="GeneralNTrailerTests" tests="4" failures="0" disabled="0" errors="0" time="0.25" tags="">
+    <testcase name="testMove" status="run" time="0.04" classname="GeneralNTrailerTests" tags="ezKine" />
+    <testcase name="testQtSerialization" status="run" time="0" classname="GeneralNTrailerTests" tags="ezKine" />
+    <testcase name="testQSettingsConformance" status="run" time="0.21" classname="GeneralNTrailerTests" tags="ezKine" />
+    <testcase name="testStlVectorStorage" status="run" time="0" classname="GeneralNTrailerTests" tags="ezKine" />
+  </testsuite>
+  <testsuite name="PublisherSubscriberProxyTest" tests="5" failures="0" disabled="0" errors="0" time="0.001" tags="">
+    <testcase name="testPublisherSubscriberGeneral" status="run" time="0.001" classname="PublisherSubscriberProxyTest" tags="ezSimQt" />
+    <testcase name="testSingleEventSubscription" status="run" time="0" classname="PublisherSubscriberProxyTest" tags="ezSimQt" />
+    <testcase name="testCustomObjectStreaming" status="run" time="0" classname="PublisherSubscriberProxyTest" tags="ezSimQt" />
+    <testcase name="testPublisherSubscriberCustomObject" status="run" time="0" classname="PublisherSubscriberProxyTest" tags="ezSimQt" />
+    <testcase name="testConditionalSubscription" status="run" time="0" classname="PublisherSubscriberProxyTest" tags="ezSimQt" />
+  </testsuite>
+</testsuites>
