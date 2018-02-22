@@ -34,7 +34,9 @@ Finally open the file `output/index.html` in your favorite browser.
 ## Screenshots
 
 ![Example Screenshot 1][Screenshot1]
+
 ![Example Screenshot 2][Screenshot2]
+
 ![Example Screenshot 3][Screenshot3]
 
 [1]: https://github.com/google/googletest
