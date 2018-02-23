@@ -1,7 +1,6 @@
 $('.testcase-table').stacktable({myClass: 'testcase-stackable', headIndex: 1});
 
 $(".nav-link").click(function(e) {
-    console.log("NOW");
     e.preventDefault();
     var href = e.target.href, id = "#" + href.substring(href.indexOf("#") + 1);
     $(window).scrollTop($(id).offset().top - 76);
@@ -171,10 +170,6 @@ $($).ready(function() {
     var idx = 0;
     var taggedElements = container.find('.testcase-table.large-only tr.testcase-row').each(function(){
       $(untaggedElements[idx]).attr('data-tags', $(this).attr('data-tags'));
-      console.log("Tagged: ", this);
-      console.log("Untagged: ", untaggedElements[idx]);
-      console.log("\n");
-
       idx++;
     });
   });
