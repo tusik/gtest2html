@@ -1,11 +1,3 @@
-$('.testcase-table').stacktable({myClass: 'testcase-stackable', headIndex: 1});
-
-$(".nav-link").click(function(e) {
-    e.preventDefault();
-    var href = e.target.href, id = "#" + href.substring(href.indexOf("#") + 1);
-    $(window).scrollTop($(id).offset().top - 76);
-});
-
 class TagManager {
   constructor() {
     this.availableTags = new Set([]);
@@ -162,6 +154,9 @@ class TagManager {
 };
 
 $($).ready(function() {
+  // Initialize the stacktable for responsive tables.
+  $('.testcase-table').stacktable({myClass: 'testcase-stackable', headIndex: 1});
+
   // Add the data tags to the stacktable.
   $('.single-testsuite-container').each(function() {
     var container = $(this);
@@ -172,6 +167,13 @@ $($).ready(function() {
       $(untaggedElements[idx]).attr('data-tags', $(this).attr('data-tags'));
       idx++;
     });
+  });
+
+  // Overwrite the default on-page link behaviour for nav-links to fix the scrolling behaviour.
+  $(".nav-link").click(function(e) {
+      e.preventDefault();
+      var href = e.target.href, id = "#" + href.substring(href.indexOf("#") + 1);
+      $(window).scrollTop($(id).offset().top - 76);
   });
 
   var tagManager = new TagManager();
