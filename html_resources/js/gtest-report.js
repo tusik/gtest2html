@@ -153,7 +153,7 @@ class TagManager {
   }
 };
 
-$($).ready(function() {
+$(document).ready(function() {
   // Initialize the stacktable for responsive tables.
   $('.testcase-table').stacktable({myClass: 'testcase-stackable', headIndex: 1});
 
@@ -181,7 +181,7 @@ $($).ready(function() {
   $('.tag-button').click(function(event){
     event.preventDefault();
     var badgeElement = $(this).find(".badge").one();
-    tag = $(this).attr("tag");
+    var tag = $(this).attr("tag");
     tagManager.onClick(tag);
   });
 });
