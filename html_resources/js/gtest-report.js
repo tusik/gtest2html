@@ -6,7 +6,9 @@ class TagManager {
     this.tagElementsMap['none'] = [];
     this.badgeElements = {};
 
-    this.totalBadgesEnabled = 0;
+    this.enabledTags = new Set([]);
+
+    this.tagContainerTagsMap = {};
 
     this.initialize();
     this.insertTagBades();
@@ -18,6 +20,7 @@ class TagManager {
       var parentContainer = $(this);
       var parentContainerId = parentContainer.attr('id');
       self.tagContainers[parentContainerId] = parentContainer;
+      self.tagContainerTagsMap[parentContainerId] = new Set([]);
 
       parentContainer.find('tr[data-tags], th[data-tags]').each(function(){
         var tagElement = $(this);
@@ -33,6 +36,7 @@ class TagManager {
           var tagsArray = tagsAttr.split(';');
           for(let tag of tagsArray) {
             self.availableTags.add(tag);
+            self.tagContainerTagsMap[parentContainerId].add(tag);
 
             if(self.tagElementsMap[tag] == null) {
               self.tagElementsMap[tag] = [];
@@ -50,13 +54,11 @@ class TagManager {
           self.tagElementsMap['none'].push(tagItem);
         }
       });
-
     });
   }
 
   insertTagBades() {
     var self = this;
-    console.log(self.tagElementsMap)
     $('.tags-container').each(function() {
       for(let tag of self.availableTags.values()) {
         var button = $(document.createElement("button"));
@@ -88,10 +90,10 @@ class TagManager {
     badgeElement.isClicked = !badgeElement.isClicked;
 
     if( badgeElement.isClicked) {
-      self.totalBadgesEnabled++;
+      self.enabledTags.add(tag);
       badgeElement.element.removeClass("btn-secondary").addClass("btn-success");
     } else {
-      self.totalBadgesEnabled--;
+      self.enabledTags.delete(tag);
       badgeElement.element.removeClass("btn-success").addClass("btn-secondary");
     }
 
@@ -116,7 +118,7 @@ class TagManager {
     var self = this;
 
     // Update badges classes.
-    if(self.totalBadgesEnabled == 0) {
+    if(self.enabledTags.size == 0) {
       $('#total-test-summary').show();
       $('.single-test-summary').show();
     } else {
@@ -134,7 +136,7 @@ class TagManager {
           containerEnabledTagItemsCount[tagItem.parentId] = 0;
         }
 
-        if(tagItem.enabledTags.length > 0 || self.totalBadgesEnabled == 0) {
+        if(tagItem.enabledTags.length > 0 || self.enabledTags.size == 0) {
           tagItem.tagElement.show();
           containerEnabledTagItemsCount[tagItem.parentId]++;
         } else  {
@@ -151,6 +153,19 @@ class TagManager {
         self.tagContainers[containerId].show();
       }
     }
+
+    for(var tagContainerId in self.tagContainerTagsMap) {
+      var containingTags = Array.from(self.tagContainerTagsMap[tagContainerId]);
+      var filteredTags = containingTags.filter(element => self.enabledTags.has(element));
+
+      var navElements = $('.nav a[href="#' + tagContainerId + '"]')
+      console.log(self.enabledTags);
+      if(filteredTags.length == 0 && self.enabledTags.size > 0) {
+        navElements.hide();
+      } else {
+        navElements.show();
+      }
+    }
   }
 };
 
@@ -158,6 +173,10 @@ $(document).ready(function() {
   // Initialize the stacktable for responsive tables.
   $('.testcase-table').stacktable({myClass: 'testcase-stackable', headIndex: 1});
 
+  // Make the height of the testcase-sidebar-list fix, so that removing and adding items by clicking
+  // the tag badges not influences the height.
+  var testcaseSidebarList = $('#testcase-sidebar-list');
+  testcaseSidebarList.attr('style', 'height: ' + testcaseSidebarList.height() + 'px;');
   // Add the data tags to the stacktable.
   $('.single-testsuite-container').each(function() {
     var container = $(this);

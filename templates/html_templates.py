@@ -65,7 +65,6 @@ tmpl_test_navbar = '''
 # Template parameters:
 #   single_testsuite_links           : HTML code with links to single testsuites.
 tmpl_test_sidebar = '''
-
 <h3 class="md-sidebar-header">Content</h3>
 <div class="sidebar-sticky">
   <ul class="nav flex-column">
@@ -79,7 +78,7 @@ tmpl_test_sidebar = '''
       <a class="nav-link" href="#single_test_results">
         <span class="oi oi-list"></span>Single Test Results
       </a>
-      <ul class="nav flex-column">
+      <ul class="nav flex-column" id="testcase-sidebar-list">
           {single_testsuite_links}
       </ul>
     </li>
