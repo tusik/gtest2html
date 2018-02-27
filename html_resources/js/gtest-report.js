@@ -56,6 +56,7 @@ class TagManager {
 
   insertTagBades() {
     var self = this;
+    console.log(self.tagElementsMap)
     $('.tags-container').each(function() {
       for(let tag of self.availableTags.values()) {
         var button = $(document.createElement("button"));
@@ -65,7 +66,7 @@ class TagManager {
 
         var badgeItem = $(document.createElement("span"));
         badgeItem.addClass("badge badge-pill badge-light");
-        badgeItem.text(self.tagElementsMap[tag].length);
+        badgeItem.text(self.tagElementsMap[tag].length / 2);
 
         button.append(badgeItem);
 
